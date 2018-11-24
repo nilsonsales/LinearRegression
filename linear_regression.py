@@ -2,6 +2,24 @@ import matplotlib.pyplot as plt
 
 
 
+def plot_regression(x, y, x_line, y_line):
+
+    # draw the points
+    plt.plot(x, y, 'o')
+    # draw the line
+    plt.plot(x_line, y_line, 'r--')
+
+    # define the limits of the graph
+    plt.axis([0, max(x) + 1, 0, max(y) + 1])
+
+    # plt.ylabel('Y')
+    # plt.xlabel('X')
+    plt.title("Linear Regression")
+
+    plt.savefig('regression.png')
+    plt.show()
+
+
 def sum_vector(vector):
     result = 0
     for i in range(len(vector)):
@@ -51,20 +69,7 @@ def main():
     x_line = [0, x[-1]+1]
     y_line = (b, line_function(x[-1] + 1, a, b))
 
-    # draw the points
-    plt.plot(x, y, 'o')
-    # draw the line
-    plt.plot(x_line, y_line, 'r--')
-
-    # define the limits of the graph
-    plt.axis([0, max(x)+1, 0, max(y)+1])
-
-    #plt.ylabel('Y')
-    #plt.xlabel('X')
-    plt.title("Linear Regression")
-    plt.figure(figsize=(8, 6))
-
-    plt.show()
+    plot_regression(x, y, x_line, y_line)
 
 
 if __name__ == '__main__':

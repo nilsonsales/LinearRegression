@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def get_input():
+def type_input():
     while (True):
         x = list(map(int, input("Enter X values: ").split()))
         y = list(map(int, input("Enter Y values: ").split()))
@@ -10,6 +10,20 @@ def get_input():
             return x, y
         else:
             print("X and Y must have the same length!\nTry again...")
+
+
+def read_input():
+    x, y = [], []
+
+    with open('coordinates.csv', 'r') as csv_file:
+        coordinates = [line.rstrip('\n') for line in csv_file]
+
+    for line in coordinates:
+        row = line.split(',')
+        x.append(int(row[0]))
+        y.append(int(row[1]))
+
+    return x, y
 
 
 def plot_regression(x, y, x_line, y_line):
@@ -57,10 +71,7 @@ def line_function(x, a, b):
 
 def main():
 
-    #x = [1, 2, 3, 4, 5]
-    #y = [1, 1, 2, 2, 4]
-
-    x, y = get_input()
+    x, y = read_input()
 
     n = len(x)
 

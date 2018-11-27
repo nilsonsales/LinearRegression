@@ -1,6 +1,16 @@
 import matplotlib.pyplot as plt
 
 
+def get_input():
+    while (True):
+        x = list(map(int, input("Enter X values: ").split()))
+        y = list(map(int, input("Enter Y values: ").split()))
+
+        if (len(x) == len(y)):
+            return x, y
+        else:
+            print("X and Y must have the same length!\nTry again...")
+
 
 def plot_regression(x, y, x_line, y_line):
 
@@ -47,8 +57,10 @@ def line_function(x, a, b):
 
 def main():
 
-    x = [1, 2, 3, 4, 5]
-    y = [1, 1, 2, 2, 4]
+    #x = [1, 2, 3, 4, 5]
+    #y = [1, 1, 2, 2, 4]
+
+    x, y = get_input()
 
     n = len(x)
 
